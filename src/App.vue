@@ -1,21 +1,20 @@
 <template>
   <BannerForm />
-  <ConteudoPrincipal />
-  <ConteudoProfessor />
+  <ConteudoAlunoVue />
+  <ConteudoProfessorVue />
+  <!-- <ExibirProfessores /> -->
 </template>
 
 <script>
-import BannerForm from './components/BannerForm.vue'
-import ConteudoPrincipal from './components/ConteudoPrincipal.vue'
-import ConteudoProfessor from './components/ConteudoProfessor.vue';
+import BannerForm from './components/BannerForm';
+import ConteudoAlunoVue from './components/ConteudoAluno.vue';
+import ConteudoProfessorVue from './components/ConteudoProfessor.vue';
+// import ExibirProfessores from './components/ExibirProfessores.vue';
 
 export default {
-  name: 'App',
-  components: {
-    BannerForm,
-    ConteudoPrincipal,
-    ConteudoProfessor
-  }
+
+    name: 'App',
+    components: { BannerForm, ConteudoAlunoVue, ConteudoProfessorVue }
 }
 </script>
 

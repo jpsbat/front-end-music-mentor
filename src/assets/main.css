@@ -2,12 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 :root {
-    --ocre: #D1451E;
-    --coral: #F0633C;
-    --coral-claro: #FFDBD1;
     --creme: #FFFAF3;
-    --verde-escuro: #263A29;
-    --verde-medio: #3D6D4A;
     --cinza: #444444;
     --cinza-claro: #EFEFEF;
     --branco: #FFF;
@@ -49,35 +44,35 @@
   .cabecalho-lg {
     font-family: var(--titulo);
     font-size: 4.35625em;
-    line-height: 120%; /* 4.0275em */
+    line-height: 120%;
     font-weight: bold;
   }
 
   .corpo {
     font-family: var(--corpo-de-texto);
     font-size: 2.7852em;
-    line-height: 120%; /* 4.0275em */
+    line-height: 120%;
   }
   
   .cabecalho {
     font-family: var(--cabecalhos);
     font-size: 2.75em;
-    line-height: 120%; /* 3.3em */
+    line-height: 120%;
   }
   
   .subtitulo-lg {
     font-size: 1.9375em;
-    line-height: 150%; /* 2.90625em */
+    line-height: 150%;
   }
   
   .paragrafo-lg {
     font-size: 1.375em;
-    line-height: 150%; /* 2.90625em */
+    line-height: 150%;
   }
   
   .paragrafo {
     font-size: 1.125em;
-    line-height: 150%; /* 1.6875em */
+    line-height: 150%;
   }
   
   @media only screen and (max-width: 767px) {

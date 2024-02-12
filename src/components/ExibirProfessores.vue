@@ -1,12 +1,11 @@
 <template>
-    <main class="conteudo-principal">
-        <section>
-            <span class="subtitulo-lg cadastre">
-                Cadastre o professor:
-            </span>
-            <div class="componente-form-table">
+  <div class="">
+    <h1>Exibindo Professores</h1>  
+    <hr>
+
+    <div class="componente-form-table">
       <form action="">
-      <label for="btn-cadastrar" class="itens">Nome: </label>
+        <label for="btn-cadastrar" class="itens">Nome: </label>
       <input
         autocomplete="off" required
         type="text"
@@ -17,7 +16,7 @@
         <br><br>
       <label for="btn-cadastrar">Data de nascimento: </label>
       <input
-        type="text"
+        type="date"
         id="btn-cadastrar"
         name="btn-cadastrar"
         v-model="nascimento"
@@ -36,10 +35,10 @@
         type="submit"
         value="Cadastrar"
         @click="cadastrarNovoProfessor($event)"
-        >
+        />
       </form>
-
-      <table>
+    
+    <table>
       <thead>
         <tr>
           <th>ID</th>
@@ -66,24 +65,23 @@
         </tbody>
       </table>
       </div>
-        </section>
-    </main>
+    </div>
 </template>
 
 <script>
 import axios from 'axios';
 
 export default {
-  name: 'ConteudoProfessor',
+  name: 'ExibirProfessores',
   props: {
-    msg: String
+    msg: String,
   },
-  data () {
+  data() {
     return {
-      nome: '',
+      nome_professor: '',
       nascimento: '',
       faculdade: '',
-      professores: []
+      professores: [],
     }
   },
   mounted() {
@@ -92,30 +90,30 @@ export default {
   methods: {
     cadastrarNovoProfessor(e) {
 
-      e.preventDefault();
+    e.preventDefault();
 
-      axios
-        .post('http://localhost:3000/routes/professores/cadastrar', {
-          "nome_professor": this.nome_professor,
-          "nascimento": this.nascimento,
-          "faculdade": this.faculdade
-        })
-        .then(response => {
-          console.log(response);
-          this.listar()
-        })
-        .catch(error => console.log(error))
-      },
+    axios
+      .post('http://localhost:3000/routes/professores/cadastrar', {
+        "nome_professor": this.nome_professor,
+        "nascimento": this.nascimento,
+        "faculdade": this.faculdade
+      })
+      .then(response => {
+        console.log(response);
+        this.listar()
+      })
+      .catch(error => console.log(error))
+    },
     listar() {
-      axios
-        .get('http://localhost:3000/routes/professores/listar')
-        .then(response => {
+    axios
+      .get('http://localhost:3000/routes/professores/listar')
+      .then(response => {
 
-          this.professores = response.data.data
-        })
-        .catch(error => console.log(error))
-      },
-      atualizarProfessor(id) {
+        this.professores = response.data.data
+      })
+      .catch(error => console.log(error))
+    },
+    atualizarProfessor(id) {
 
       axios
           .get(`http://localhost:3000/routes/professores/${id}`)
@@ -173,57 +171,25 @@ export default {
 </script>
 
 <style scoped>
-.conteudo-principal {
-  padding-bottom: 7.5rem;
-  background: var(--creme, #FFFAF3);
-  color: var(--cinza, #444);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5rem;
+h3 {
+  margin: 40px 0 0;
 }
-.cadastre {
-  color: var(--coral, #F0633C);
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
-@media only screen and (max-width: 1300px) {
-  .conteudo-principal {
-    padding: 5rem 3.75rem;
-    gap: 3.5rem;
-  }
+li {
+  display: inline-block;
+  margin: 0 10px;
 }
-@media only screen and (max-width: 767px) {
-  .conteudo-principal {
-    padding: 4rem 1.5rem;
-    gap: 4rem;
-  }
+a {
+  color: #42b983;
 }
-input, select {
+hr {
+  width: 40%;
+  margin-bottom: 1rem;
+}
+input {
   margin-left: .5rem;
-  color: black;
-  font-size: 15px;
-  width: 100%;
-  padding: 10px 5px 5px;
-  border-radius: 5px;
-  border-width: 3px;
-}
-.componente-form-table {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-}
-.itens{
-    margin-bottom: 1rem;
-}
-.botao{
-  margin-left: .5rem;
-  color: #000000;
-  font-size: 15px;
-  width: 30%;
-  padding: 5px 5px 5px;
-  border-radius: 4px;
 }
 </style>

@@ -17,7 +17,7 @@
         <br><br>
       <label for="btn-cadastrar">Data de nascimento: </label>
       <input
-        type="date"
+        type="text"
         id="btn-cadastrar"
         name="btn-cadastrar"
         v-model="nascimento"
