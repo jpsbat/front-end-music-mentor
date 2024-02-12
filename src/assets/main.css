@@ -1,0 +1,95 @@
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+    --ocre: #D1451E;
+    --coral: #F0633C;
+    --coral-claro: #FFDBD1;
+    --creme: #FFFAF3;
+    --verde-escuro: #263A29;
+    --verde-medio: #3D6D4A;
+    --cinza: #444444;
+    --cinza-claro: #EFEFEF;
+    --branco: #FFF;
+  
+    --font-family-padrao: Nunito Sans, sans-serif;
+    --cabecalhos: Paytone One, sans-serif;
+    --titulo: Bebas Neue, sans-serif;
+    --corpo-de-texto: Open Sans, sans-serif;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul, li {
+    list-style: none;
+  }
+  
+  button {
+    border: 0;
+    background-color: inherit;
+    font: inherit;
+  }
+  
+  body {
+    min-height: 100vh;
+    color: var(--creme);
+    font-family: var(--font-family-padrao);
+    font-size: 16px;
+    font-weight: 200;
+    font-style: normal;
+    background: url('./images/fundo-banner.png');
+  }
+  
+  .cabecalho-lg {
+    font-family: var(--titulo);
+    font-size: 4.35625em;
+    line-height: 120%; /* 4.0275em */
+    font-weight: bold;
+  }
+
+  .corpo {
+    font-family: var(--corpo-de-texto);
+    font-size: 2.7852em;
+    line-height: 120%; /* 4.0275em */
+  }
+  
+  .cabecalho {
+    font-family: var(--cabecalhos);
+    font-size: 2.75em;
+    line-height: 120%; /* 3.3em */
+  }
+  
+  .subtitulo-lg {
+    font-size: 1.9375em;
+    line-height: 150%; /* 2.90625em */
+  }
+  
+  .paragrafo-lg {
+    font-size: 1.375em;
+    line-height: 150%; /* 2.90625em */
+  }
+  
+  .paragrafo {
+    font-size: 1.125em;
+    line-height: 150%; /* 1.6875em */
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .cabecalho-lg {
+      font-size: 2.75em;
+    }
+  
+    .cabecalho {
+      font-size: 2.3125em;
+    }
+  
+    .subtitulo-lg {
+      font-size: 1.625em;
+    }
+  }
