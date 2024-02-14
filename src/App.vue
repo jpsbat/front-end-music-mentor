@@ -12,7 +12,11 @@ import ConteudoProfessorVue from './components/ConteudoProfessor.vue';
 export default {
 
     name: 'App',
-    components: { BannerForm, ConteudoAlunoVue, ConteudoProfessorVue }
+    components: {
+      BannerForm,
+      ConteudoAlunoVue,
+      ConteudoProfessorVue
+    }
 }
 </script>
 

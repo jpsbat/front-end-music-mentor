@@ -57,38 +57,41 @@
     </form>
     </div>
     <div>
+      <span class="subtitulo-lg cadastre">
+        Alunos matriculados:
+      </span>
       <table>
         <table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Nascimento</th>
-      <th>Instrumento</th>
-      <th>Professor</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      v-for="aluno in alunos"
-      :key="aluno.id"
-    >
-      <td>{{ aluno.id }}</td>
-      <td>{{ aluno.nome_aluno }}</td>
-      <td>{{ aluno.nascimento }}</td>
-      <td>{{ aluno.instrumento }}</td>
-      <td>{{ aluno.professor }}</td>
-      <td>
-          <button @click="atualizarAluno(aluno.id)">Alterar</button>
-          <button @click="excluirAluno(aluno.id)">Excluir</button>
-      </td>
-     </tr>
-    </tbody>
-  </table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Nascimento</th>
+              <th>Instrumento</th>
+              <th>Professor</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+      <tbody>
+        <tr
+          v-for="aluno in alunos"
+          :key="aluno.id"
+        >
+          <td>{{ aluno.id }}</td>
+          <td>{{ aluno.nome_aluno }}</td>
+          <td>{{ aluno.nascimento }}</td>
+          <td>{{ aluno.instrumento }}</td>
+          <td>{{ aluno.professor }}</td>
+          <td>
+              <button @click="atualizarAluno(aluno.id)">Alterar</button>
+              <button @click="excluirAluno(aluno.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+        </table>
       </table>
     </div>
-      </section>
+  </section>
   </main>
 </template>
 
@@ -209,6 +212,7 @@ methods: {
 padding-bottom: 7.5rem;
 background: var(--creme, #FFFAF3);
 color: var(--cinza, #444);
+border-radius: 3.75rem 3.75rem 0rem 0rem;
 
 display: flex;
 flex-direction: column;
@@ -219,7 +223,7 @@ gap: 5rem;
 color: var(--coral, #F0633C);
 display: block;
 text-align: center;
-margin-bottom: 1.5rem;
+margin: 1.5rem;
 }
 @media only screen and (max-width: 1300px) {
 .conteudo-principal {

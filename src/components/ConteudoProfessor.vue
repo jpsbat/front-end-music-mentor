@@ -6,28 +6,28 @@
           </span>
           <div class="componente-form-table">
     <form action="">
-    <label for="btn-cadastrar" class="itens">Nome: </label>
+    <label for="btn-nome" class="itens">Nome: </label>
     <input
       autocomplete="off" required
       type="text"
-      id="btn-cadastrar"
-      name="btn-cadastrar"
+      id="btn-nome"
+      name="btn-nome"
       v-model="nome"
       >
       <br><br>
-    <label for="btn-cadastrar">Data de nascimento: </label>
+    <label for="btn-nascimento">Data de nascimento: </label>
     <input
       type="text"
-      id="btn-cadastrar"
-      name="btn-cadastrar"
+      id="btn-nascimento"
+      name="btn-nascimento"
       v-model="nascimento"
       >
       <br><br>
-      <label for="btn-cadastrar">Faculdade que se formou: </label>
+      <label for="btn-faculdade">Faculdade que se formou: </label>
     <input
       type="text"
-      id="btn-cadastrar"
-      name="btn-cadastrar"
+      id="btn-faculdade"
+      name="btn-faculdade"
       v-model="faculdade"
       >
       <br><br>
@@ -41,33 +41,39 @@
   </div>
 
   <br><br>
-  <table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Nascimento</th>
-      <th>Faculdade</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      v-for="professor in professores"
-      :key="professor.id"
-    >
-      <td>{{ professor.id }}</td>
-      <td>{{ professor.nome_professor }}</td>
-      <td>{{ professor.nascimento }}</td>
-      <td>{{ professor.faculdade }}</td>
-      <td>
-          <button @click="atualizarProfessor(professor.id)">Alterar</button>
-          <button @click="excluirProfessor(professor.id)">Excluir</button>
-      </td>
-     </tr>
-    </tbody>
-  </table>
-      </section>
+
+  <span class="subtitulo-lg cadastre">
+    Professores disponíveis:
+  </span>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Nascimento</th>
+          <th>Faculdade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="professor in professores"
+          :key="professor.id"
+        >
+          <td>{{ professor.id }}</td>
+          <td>{{ professor.nome_professor }}</td>
+          <td>{{ professor.nascimento }}</td>
+          <td>{{ professor.faculdade }}</td>
+          <td>
+              <button @click="atualizarProfessor(professor.id)">Alterar</button>
+              <button @click="excluirProfessor(professor.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    </section>
   </main>
 </template>
 
@@ -97,7 +103,7 @@ methods: {
 
     axios
       .post('http://localhost:3000/routes/professores/cadastrar', {
-        "nome_professor": this.nome_professor,
+        "nome_professor": this.nome,
         "nascimento": this.nascimento,
         "faculdade": this.faculdade
       })
@@ -142,7 +148,7 @@ methods: {
                 .catch(error => console.log(error))
 
           } else {
-            // Se o usuário clicou em "Cancelar" ou fechou a caixa de diálogo
+            
             console.log("Você cancelou a operação.");
           }
 
@@ -152,10 +158,8 @@ methods: {
     },
     excluirProfessor(id) {
 
-      // Exibe uma caixa de diálogo com uma pergunta
       var result = window.confirm("Você tem certeza que deseja excluir este professor?");
 
-      // Verifica o resultado da ação do usuário
       if (result) {
         axios
           .delete(`http://localhost:3000/routes/professores/excluir/${id}`)
@@ -165,7 +169,7 @@ methods: {
           })
           .catch(error => console.log(error))
       } else {
-        // Se o usuário clicar em "Cancelar" ou fechar a caixa de diálogo, executa o código aqui
+        
         window.alert("O usuário cancelou a exclusão.");
       }
     }
