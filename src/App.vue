@@ -2,14 +2,12 @@
   <BannerForm />
   <ConteudoAlunoVue />
   <ConteudoProfessorVue />
-  <!-- <ExibirProfessores /> -->
 </template>
 
 <script>
 import BannerForm from './components/BannerForm';
 import ConteudoAlunoVue from './components/ConteudoAluno.vue';
 import ConteudoProfessorVue from './components/ConteudoProfessor.vue';
-// import ExibirProfessores from './components/ExibirProfessores.vue';
 
 export default {
 

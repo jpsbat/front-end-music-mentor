@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'ProfessorForm',
+  name: 'BannerForm',
   props: {
     msg: String
   }
