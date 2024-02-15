@@ -3,8 +3,8 @@
   <ConteudoAlunoVue />
   <ConteudoProfessorVue />
 </template>
-
 <script>
+
 import BannerForm from './components/BannerForm';
 import ConteudoAlunoVue from './components/ConteudoAluno.vue';
 import ConteudoProfessorVue from './components/ConteudoProfessor.vue';

@@ -6,28 +6,30 @@
           </span>
           <div class="componente-form-table">
     <form action="">
-    <label for="btn-nome" class="itens">Nome: </label>
+    <label for="btn-cadastrar" class="itens">Nome: </label>
     <input
       autocomplete="off" required
       type="text"
-      id="btn-nome"
-      name="btn-nome"
+      id="btn-cadastrar"
+      name="btn-cadastrar"
       v-model="nome"
       >
       <br><br>
-    <label for="btn-nascimento">Data de nascimento: </label>
+    <label for="btn-cadastrar">Data de nascimento: (Formato AAAA-MM-DD)</label>
     <input
+      autocomplete="off" required
       type="text"
-      id="btn-nascimento"
-      name="btn-nascimento"
+      id="btn-cadastrar"
+      name="btn-cadastrar"
       v-model="nascimento"
       >
       <br><br>
-      <label for="btn-faculdade">Faculdade que se formou: </label>
+      <label for="btn-cadastrar">Faculdade que se formou: </label>
     <input
+      autocomplete="off" required
       type="text"
-      id="btn-faculdade"
-      name="btn-faculdade"
+      id="btn-cadastrar"
+      name="btn-cadastrar"
       v-model="faculdade"
       >
       <br><br>
@@ -53,7 +55,8 @@
           <th>Nome</th>
           <th>Nascimento</th>
           <th>Faculdade</th>
-          <th>Ações</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -62,12 +65,14 @@
           :key="professor.id"
         >
           <td>{{ professor.id }}</td>
-          <td>{{ professor.nome_professor }}</td>
+          <td>{{ professor.nome }}</td>
           <td>{{ professor.nascimento }}</td>
           <td>{{ professor.faculdade }}</td>
           <td>
-              <button @click="atualizarProfessor(professor.id)">Alterar</button>
-              <button @click="excluirProfessor(professor.id)">Excluir</button>
+              <button class="botao" @click="atualizarProfessor(professor.id)">Alterar</button>
+          </td>
+          <td>
+            <button class="botao" @click="excluirProfessor(professor.id)">Excluir</button>
           </td>
         </tr>
       </tbody>
@@ -82,9 +87,6 @@ import axios from 'axios';
 
 export default {
 name: 'ConteudoProfessor',
-props: {
-  msg: String
-},
 data () {
   return {
     nome: '',
@@ -117,7 +119,7 @@ methods: {
     axios
       .get('http://localhost:3000/routes/professores/listar')
       .then(response => {
-
+        
         this.professores = response.data.data
       })
       .catch(error => console.log(error))
@@ -128,9 +130,9 @@ methods: {
         .get(`http://localhost:3000/routes/professores/${id}`)
         .then(response => {
 
-          var nome = window.prompt("Nome do professor:", response.data.data.nome_professor);
-          var nascimento_professor = window.prompt("Data de nascimento do professor:", response.data.data.nascimento);
-          var faculdade_professor = window.prompt("Faculdade do professor:", response.data.data.faculdade);
+          var nome = window.prompt("Nome do professor:", response.data.data.professor);
+          var nascimento_professor = window.prompt("Data de nascimento do professor:", response.data.data.professor);
+          var faculdade_professor = window.prompt("Faculdade do professor:", response.data.data.professor);
 
           if (nome !== null) {
 
@@ -230,5 +232,21 @@ font-size: 15px;
 width: 30%;
 padding: 5px 5px 5px;
 border-radius: 4px;
+}
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: #f5f5f5;
+  width: 100%;
+  margin-bottom: 20px;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
 }
 </style>

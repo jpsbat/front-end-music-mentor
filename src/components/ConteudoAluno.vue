@@ -15,7 +15,7 @@
       v-model="nome"
       >
       <br><br>
-    <label for="btn-cadastrar">Data de nascimento: </label>
+    <label for="btn-cadastrar">Data de nascimento: (Formato AAAA-MM-DD)</label>
     <input
       type="text"
       id="btn-cadastrar"
@@ -65,11 +65,12 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nome</th>
+              <th>Nome do aluno</th>
               <th>Nascimento</th>
               <th>Instrumento</th>
               <th>Professor</th>
-              <th>Ações</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
       <tbody>
@@ -78,13 +79,15 @@
           :key="aluno.id"
         >
           <td>{{ aluno.id }}</td>
-          <td>{{ aluno.nome_aluno }}</td>
+          <td>{{ aluno.aluno }}</td>
           <td>{{ aluno.nascimento }}</td>
           <td>{{ aluno.instrumento }}</td>
           <td>{{ aluno.professor }}</td>
           <td>
-              <button @click="atualizarAluno(aluno.id)">Alterar</button>
-              <button @click="excluirAluno(aluno.id)">Excluir</button>
+            <button class="botao" @click="atualizarAluno(aluno.id)">Alterar</button>
+          </td>
+          <td>
+            <button class="botao" @click="excluirAluno(aluno.id)">Excluir</button>
           </td>
         </tr>
       </tbody>
@@ -122,7 +125,7 @@ methods: {
     axios
     .post('http://localhost:3000/routes/alunos/cadastrar', {
       "id_professor": this.professor,
-      "nome": this.nome_aluno,
+      "nome_aluno": this.nome,
     })
     .then(response => {
       console.log(response);
@@ -160,14 +163,18 @@ methods: {
 
         if (id_professor !== null) {
           
-          var nome_aluno = window.prompt("Nome do aluno:", response.data.data.aluno);
+          var nome = window.prompt("Nome do aluno:", response.data.data.aluno);
+          var novo_nascimento = window.prompt("Data de nascimento:", response.data.data.aluno);
+          var novo_instrumento = window.prompt("Instrumento:", response.data.data.aluno);
 
-          if (nome_aluno !== null) {
+          if (nome !== null) {
 
             axios
             .patch(`http://localhost:3000/routes/alunos/alterar/${id}`, {
               id_professor: id_professor,
-              nome: nome_aluno,
+              nome_aluno: nome,
+              nascimento: novo_nascimento,
+              instrumento: novo_instrumento
             })
             .then(response => {
               console.log(response);
@@ -261,5 +268,21 @@ font-size: 15px;
 width: 30%;
 padding: 5px 5px 5px;
 border-radius: 4px;
+}
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: #f5f5f5;
+  width: 100%;
+  margin-bottom: 20px;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
 }
 </style>
